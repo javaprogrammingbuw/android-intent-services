@@ -31,12 +31,13 @@ public class ReminderService extends IntentService {
             e.printStackTrace();
         }
         Log.d(TAG, "Time is up");
+        MainActivity.INSTANCE.showNotification("Time is up!");
         Messenger messenger = (Messenger) bundle.get("messenger");
         Message message = Message.obtain();
         message.setData(bundle);
         try{
             messenger.send(message);
-        } catch(RemoteException e){
+        } catch(RemoteException e) {
             e.printStackTrace();
         }
     }
